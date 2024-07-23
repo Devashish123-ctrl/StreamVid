@@ -1,0 +1,551 @@
+#Movie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    .banner{
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        margin-bottom: 200px;
+        padding-top: 100px;
+        .movieLists{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            .movieItem:nth-child(n+5){
+                display: none;
+            }
+            .movieItem:hover{
+                transform: scale(1.05) translate(-50%,50%);
+                box-shadow: 10px 10px 50px rgba(108,82,238,0.2);
+            }
+            .movieItem{
+                width: 200px;
+                height: 300px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                border-radius: 10px;
+                box-shadow: 10px 10px 50px rgba(0,0,0,.4);
+                .content{
+                    display: none;
+                }
+                z-index: 1;
+                position: absolute;
+                bottom: 0;
+                transform: translate(-50%,50%);
+                transition: .5s;
+            }
+            .movieItem:nth-child(2){
+                left:40%;
+                cursor: pointer;
+            }
+            .movieItem:nth-child(3){
+                cursor: pointer;
+                left:calc(40% + 200px + 1rem);
+            }
+            .movieItem:nth-child(4){
+                cursor: pointer;
+                left:calc(40% + 400px + 2rem);
+            }
+            .movieItem:first-child{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                transform: translate(0,0);
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding-left: 10%;
+                border-radius: 0;
+                .content{
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
+                    width: 80%;
+                    flex-direction: column;
+                    animation: animateText 1s ease-in;
+                    p{
+                        font-size: 2rem;
+                        font-weight: 600;
+                        color: var(--secColorLight);
+                    }
+                    h3{
+                        font-size: 4rem;
+                        font-weight: 800;
+                        -webkit-text-stroke-width: 3px;
+                        -webkit-text-stroke-color: var(--secColor);
+                        color: transparent;
+                    }
+                    button{
+                        border: none;
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                        padding: 10px 20px;
+                        margin-top: 2rem;
+                        background:linear-gradient(45deg,var(--secColor) 70% ,var(--secColorDark));
+                        color: var(--textColor);
+                        border-radius: 5px;
+                        transition: var(--transition);
+                        cursor: pointer;
+                    }
+                    button:hover{
+                        transform: scale(1.05);
+                        box-shadow: 5px 5px 20px rgba(108,82,238,0.2);
+                    }
+                }
+            }
+            .movieItem:first-child::after{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                content: '';
+                background-color: black;
+                opacity: .7;
+            }
+        }
+        .iconLeft{
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--secColor);
+            border-radius: 50%;
+            padding: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .iconRight{
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--secColor);
+            border-radius: 50%;
+            padding: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .iconLeft:hover,.iconRight:hover{
+            box-shadow: 10px 10px 50px rgba(108,82,238,0.6);
+            transform: scale(1.05) translateY(-50%);
+        }
+    }
+}
+
+#MovieDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    .banner{
+        padding: 100px 5%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: 0;
+        position: relative;
+        padding-top: 100px;
+        .left{
+            width: 30%;
+            padding: 30px;
+            img{
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 20px 20px 50px rgba(0,0,0,.4);
+                transition: var(--transition);
+            }
+            img:hover{
+                box-shadow: 20px 20px 50px rgba(108, 82, 238,.4);
+                transform: scale(1.05);
+            }
+        }
+        .right{
+            width: 70%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            >h3{
+                font-size: 3rem;
+                font-weight: 800;
+                color: var(--textColor);
+            }
+            >p:nth-child(5){
+                color: var(--secColorLight);
+                font-size: 1.1rem;
+            }
+            >p{
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--textColor);
+                margin-bottom: 1rem;
+                span{
+                    color: var(--secColor);
+                    font-size: 1.3rem;
+                }
+            }
+            >h3::first-letter{
+                font-size: 4rem;
+                color: var(--secColor);
+            }
+            .row{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: .5rem;
+                h3{
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: var(--textColor);
+                }
+                .dot{
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background-color: var(--secColor);
+                }
+                .icon{
+                    font-size: 1.1rem;
+                    color: var(--textColor);
+                }
+            }
+        }
+    }
+    .banner::before{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background-color: black;
+        opacity: .8;
+        z-index: -1;
+    }
+    .peoples{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        .peopleList{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+            overflow: scroll;
+            width: 100%;
+            .people:first-child{
+                margin-left: 5%;
+            }
+            .people:last-child{
+                margin-right: 5%;
+            }
+            .people{
+                cursor: pointer;
+                margin: 20px 0;
+                width: calc(25% - .75rem);
+                box-shadow: 20px 20px 50px rgba(0,0,0,.4);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                flex-shrink: 0;
+                overflow: hidden;
+                border-radius: 10px;
+                position: relative;
+                transition: var(--transition);
+                img{
+                    width: 100%;
+                }
+                .content{
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                    width: calc(100% - 20px);
+                    height: calc(100% - 20px);
+                    gap: .5rem;
+                    display: none;
+                    h3{
+                        font-size: 1.5rem;
+                        font-weight: 800;
+                        color: var(--textColor);
+                        text-align: center;
+                        transition: var(--transition);
+                        cursor: pointer;
+                    }
+                    h3:hover{
+                        color: var(--secColor);
+                    }
+                    h5{
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        color: var(--textColor);
+                        text-align: center;
+                    }
+                }
+            }
+            .people:hover::before{
+                position: absolute;
+                top: 0;
+                width: 100%;
+                left: 0;
+                height: 100%;
+                content: '';
+                background-color: black;
+                opacity: .7;
+                z-index: 0;
+            }
+            .people:hover{
+                transform: scale(1.05);
+                .content{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+    .videoContainer{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: none;
+        backdrop-filter: blur(33px);
+        background-color: rgba(0,0,0,.7);
+        z-index: 100;
+        padding: calc(30px + 3rem);
+        .videoPlayer{
+            width: 100%;
+            height: calc(100vh - 20px - 6rem);
+            border-radius: 10px;
+            box-shadow: 10px 10px 50px rgba(0,0,0,.4);
+            transition: var(--transition);
+            animation: animateText 1s ease-in;
+        }
+        .icon{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 3rem;
+            color: var(--textColor);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .icon:hover{
+            transform: scale(1.05);
+            color: var(--secColor);
+        }
+    }
+}
+
+#MovieDetails.active{
+    height: 100vh;
+    overflow: hidden;
+    .videoContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;       
+    }
+}
+
+#MovieDetails.active + footer{
+    display: none;
+}
+
+/* For Tablets */
+@media screen and (max-width:999px) {
+    #Movie{
+        .banner{
+            .movieLists{
+                .movieItem:nth-child(n+4){
+                    display: none;
+                }
+                .movieItem:first-child{
+                    padding-left: 0;
+                    padding: 0 5%;
+                    .content{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .iconLeft,.iconRight{
+            display: none;
+        }
+    }
+    #MovieDetails{
+        .banner{
+            flex-direction: column;
+            .left{
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0;
+                img{
+                    width: 50%;
+                }
+            }
+            .right{
+                width: 100%;
+                align-items: flex-start;
+            }
+        }
+        .peoples{
+            .peopleList{
+                .people{
+                    width:calc(calc(100% - 2rem) / 3);
+                    .content{
+                        top: 10px;
+                        left: 10px;
+                        width: calc(100% - 10px);
+                        height: calc(100% - 10px);
+                    }
+                }
+            }
+        }
+        
+    }
+}
+/* For Mobiles */
+@media screen and (max-width:599px) {
+    #Movie{
+        .banner{
+            .movieLists{
+                .movieItem{
+                    width: calc(45% - .5rem);
+                    transform: translateX(0) translateY(50%);
+                    transition: .3s;
+                }
+                .movieItem:nth-child(2){
+                    left: 5%;
+                }
+                .movieItem:nth-child(3){
+                    left:calc(5% + 45% - .5rem + 1rem);
+                }
+                
+                .movieItem:nth-child(n+2):hover{
+                    transform: translateX(0) translateY(50%);
+                }
+
+                .movieItem:first-child{
+                    transform: translate(0,0);
+                    .content{
+                        align-items: center;
+                        width: 100%;
+                        p{
+                            text-align: center;
+                            font-size: 1.1rem;
+                        }
+                        h3{
+                            font-size: 2rem;
+                            text-align: center;
+                            -webkit-text-stroke-width: 1px;
+                        }
+                        button{
+                            border-radius: 3px;
+                            font-size: 1.1rem;
+                            padding: 5px 10px;
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    #MovieDetails{
+        .banner{
+            gap: 1rem;
+            .left{
+                img{
+                    width: 70%;
+                }
+            }
+            .right{
+                width: 100%;
+                align-items: flex-start;
+                .row{
+                    gap: .5rem;
+                    h3{
+                        font-size: .9rem;
+                    }
+                    .icon{
+                        font-size: .9rem;
+                    }
+                    .dot{
+                        width: 3px;
+                        height: 3px;
+                    }
+                }
+                >h3 {
+                    font-size: 2rem;
+                    font-weight: 800;
+                    color: var(--textColor);
+                }
+                >h3::first-letter{
+                    font-size: 2.5rem;
+                }
+                >p:nth-child(5) {
+                    font-size: .7rem;
+                }
+                >p{
+                    font-size: .9rem;
+                    span{
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+        .peoples{
+            .peopleList{
+                .people{
+                    .content{
+                        gap: 0.1rem;
+                        h3{
+                            font-size: .9rem;
+                        }
+                        h5{
+                            font-size: .7rem;
+                        }
+                    }
+                }
+            }
+        }
+        .videoContainer{
+            padding: 0 5%;
+            .videoPlayer{
+                width: 100%;
+                height: calc(100vh - 40px - 4rem);
+            }
+            .icon{
+                font-size: 2rem;
+            }
+        }
+    }
+}

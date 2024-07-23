@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Lexend:100,200,300,regular,500,600,700,800,900);
+
+:root{
+    --bgColor:#0B1320;
+    --bgColorLight:#1A1D33;
+    --textColor:#FEF5E9;
+    --secColor:#6C52EE;
+    --secColorDark:#4D5C7C;
+    --secColorLight:#BABFC1;
+    --transition: all .4s;
+    --hoverColor:#181B31;
+    --secColorWarn:crimson;
+    --secColorGold:#cfb53b;
+    --gradientColor:linear-gradient(45deg,var(--secColor) 70% ,var(--secColorDark));
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--bgColor);
+}
+
+*{
+    font-family: 'Lexend';
+    user-select: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+
+.no-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 50px 5%;
+    img{
+        width: 50%;
+    }
+    h3{
+        color: var(--secColorWarn);
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+    p{
+        color: var(--secColorDark);
+        font-size: 1.1rem;
+        font-weight: 400;
+        text-align: center;
+        margin-top: .5rem;
+    }
+}
+/* For Tablets */
+@media screen and (max-width:999px) {
+    .App{
+        padding-bottom: calc(40px + 3.3rem);
+    }
+    .App.active{
+        padding-bottom: 0;
+    }
+    
+}
+/* For Mobiles */
+@media screen and (max-width:599px) {
+    .App{
+        padding-bottom: calc(40px + 2.1rem);
+    }
+    .no-data{
+        img{
+            width: 80%;
+        }
+        h3{
+            font-size: 2rem;
+        }
+        p{
+            font-size: .9rem;
+        }
+    }
+}
+
+@keyframes animateText {
+    0%{
+        filter: blur(33px);
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    100%{
+        filter: blur(0px);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes animateTextReverse {
+    0%{
+        filter: blur(33px);
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100%{
+        filter: blur(0px);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

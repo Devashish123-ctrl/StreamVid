@@ -1,0 +1,245 @@
+header{
+    position: fixed;
+    z-index: 50;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    transition: var(--transition);
+    .left{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+        .links{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+    .right{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+.App.active header{
+    display: none;
+}
+header.sticky{
+    background-color: rgba(11, 19, 32, .95);
+}
+
+header .left .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    gap: .5rem;
+}
+header .left .logo img{
+    width: 70px;
+    object-fit: cover;
+}
+header .left .logo .logoTitle{
+    color: var(--textColor);
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    transition: var(--transition);
+}
+header .left .logo:hover{
+    transform: scale(1.05);
+}
+header .left .logo:hover .logoTitle{
+    color: var(--secColor);
+}
+header .left  .link{
+    color: var(--textColor);
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: var(--transition);
+    position: relative;
+    .linkIcon{
+        display: none;
+        transition: var(--transition);
+    }
+}
+header .left  .link:hover::after{
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 2px;
+    background-color: var(--secColor);
+    content: '';
+    animation: animateLinks .4s ease-in forwards;
+}
+header .left  .link:hover{
+    color: var(--secColor);
+    transform: scale(1.05);
+}
+header .left  .link.active{
+    color: var(--secColor);
+}
+header .left  .link.active::after{
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 2px;
+    background-color: var(--secColor);
+    content: '';
+    width: 100%;
+}
+header .right .icon{
+    font-size: 1.5rem;
+    color: var(--textColor);
+    cursor: pointer;
+    transition: var(--transition);
+}
+header .right .icon:hover{
+    transform: scale(1.2);
+    color: var(--secColor);
+}
+header .right .profile{
+    color: var(--textColor);
+    font-size: 2rem;
+    border: 2px solid var(--textColor);
+    border-radius: 50%;
+    padding: 5px;
+    transition: var(--transition);
+}
+header .right .profileTitle{
+    background:var(--gradientColor);
+    color: var(--textColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    width: 50px;
+    height: 50px;
+    transition: var(--transition);
+    border: 2px solid var(--gradientColor);
+    font-weight: 700;
+}
+header .right .profileTitle:hover{
+    transform: scale(1.05);
+}
+header .right .profile:hover{
+    color: var(--secColor);
+    border-color: var(--secColor);
+    transform: scale(1.05);
+}
+header .right button{
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg,var(--secColor) 70% ,var(--secColorDark));
+    color: var(--textColor);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+header .right button:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 50px rgba(108,82,238,0.2);
+}
+
+/* Responsive */
+/* For Tablets */
+@media screen and (max-width:999px) {
+    header .left .logo .logoTitle{
+        display: none;
+    }
+    header .left .links{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 5% 20px 5%;
+        background: linear-gradient(45deg,var(--secColor) 70% ,var(--secColorDark));
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+    }
+    header .left .links .link{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .linkIcon{
+            display: flex;
+            font-size: 2rem;
+        }
+        span{
+            transition: var(--transition);
+        }
+    }
+    header .left .links .link.active::after{
+        display: none;
+    }
+    header .left  .link.active{
+        .linkIcon{
+            color: var(--bgColor);
+        }
+        span{
+            color: var(--bgColor);
+        }
+    }
+    header .left  .link:hover{
+        color: var(--textColor);
+        transform: scale(1);
+    }
+}
+/* For Mobiles */
+@media screen and (max-width:599px) {
+    header .right {
+        gap: 1rem;
+    }
+    header .right button {
+        padding: 5px 10px;
+        font-size: .9rem;
+    }
+    header .right .profile {
+        font-size: 1.5rem;
+        padding: 3px;
+    }
+    header .right .profileTitle {
+        font-size: .9rem;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+    }
+    header .right .icon {
+        font-size: 1.2rem;
+    }
+    header .left .logo img {
+        width: 50px;
+    }
+    header .left .links .link{
+        font-size: .9rem;
+        .linkIcon{
+            font-size: 1.2rem;
+        }
+    }
+
+    
+}
+
+/* Animations */
+@keyframes animateLinks {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
